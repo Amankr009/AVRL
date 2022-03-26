@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<!-- CSS Code to design Body and Animation -->
+        <style>
+			.GP{
+               display: flex;
+               justify-content: center;
+               margin-top: 40px;
+			}
+			.parent{
+               display: flex;
+               flex-direction: column;
+               justify-content: space-between;
+               width: 300px;
+               height: 300px;
+			}
+			.row{
+               display: flex;
+               justify-content: space-between;
+			}
+			.block1{
+               background: #f53d0a;
+               width: 50px;
+               height: 50px;
+               position:relative;
+               border-radius: 25px;
+			}
+			.block2{
+               background: #F3E508;
+               width: 50px;
+               height: 50px;
+               position:relative;
+               border-radius: 25px;
+            }
+			.block3{
+               background: #4FBB29;
+               width: 50px;
+               height: 50px;
+               position:relative;
+               border-radius: 25px;
+			}
+			.block4{
+               background: #2596be;
+               width: 50px;
+               height: 50px;
+               position:relative;
+               border-radius: 25px;
+			}
+			.controlBtn{
+               margin-top: 60px;
+               display: flex;
+               justify-content: center;
+			}
+			.startAnimationBlock1{
+               animation: leftToRight 1s infinite  ease-in-out alternate;
+			}
+			.startAnimationBlock2{
+               animation: topToBottom 1s infinite  ease-in-out alternate;
+			}
+			.startAnimationBlock3{
+               animation: bottomToTop 1s infinite ease-in-out alternate;
+			}
+			.startAnimationBlock4{
+               animation: rightToleft 1s infinite  ease-in-out alternate;
+			}
+			@keyframes leftToRight {
+               from {
+                   left:0px;
+                   transform: scaleX(1);
+                   border-radius: 25px;
+				   <!-- background:red; -->
+               }
+               to {
+                   left: 120px;
+                   transform: scaleX(6); 
+                   border-radius: 12px;
+				   <!-- background:yellow; -->
+               }
+			}
+
+			@keyframes topToBottom {
+               from {
+                   top: 0px; 
+                   transform: scaleY(1);
+                   border-radius: 25px;
+				   <!-- background:yellow; -->
+               }
+               to {
+                   top: 120px; 
+                   transform: scaleY(6);
+                   border-radius: 12px;
+				   <!-- background:skyblue; -->
+               } 
+			}
+
+			@keyframes rightToleft {
+               from {
+                   right: 0px;
+                   transform: scaleX(1);
+                   border-radius: 25px;
+				   <!-- background:skyblue; -->
+               }
+               to {
+                   right: 120px;
+                   transform: scaleX(6);
+                   border-radius: 12px;
+				   <!-- background:green; -->
+               }
+			}
+			@keyframes bottomToTop {
+               from {
+                   bottom: 0px;
+                   transform: scaleY(1);
+                   border-radius: 25px;
+				   <!-- background:green; -->
+               }
+               to {
+                   bottom: 120px;
+                   transform: scaleY(6);
+				   border-radius: 12px;
+				   <!-- background:red; -->
+               }
+			}
+			#startAnimation{
+				background-color:#008080; 
+				text-align:center; 
+				color: white; 
+				height:30px;
+				width:75px;
+				margin-right:60px;
+				margin-left:60px;
+			}
+    </style>
+    </head>
+    <script>
+		let allowedColor = [ "#f53d0a","#F3E508","#4FBB29", "#2596be"];
+        let timeOut ;
+		//Start Function //
+        function handleStart(){
+            $('.block1').addClass('startAnimationBlock1');
+            $('.block2').addClass('startAnimationBlock2');
+            $('.block3').addClass('startAnimationBlock3');
+            $('.block4').addClass('startAnimationBlock4');
+			//Below code helps to change color //
+           timeOut = setInterval(() => {
+                $('.block1').css('background',`${allowedColor[1]}`);
+                $('.block2').css('background',`${allowedColor[2]}`);
+                $('.block3').css('background',`${allowedColor[3]}`);
+                $('.block4').css('background',`${allowedColor[0]}`);
+                let newArr = [allowedColor[1],allowedColor[2],allowedColor[3],allowedColor[0]];
+                allowedColor = newArr;
+            }, 2000);
+        }
+		//Stop Function //
+        function handleStop(){
+            $('.block1').removeClass('startAnimationBlock1');
+            $('.block2').removeClass('startAnimationBlock2');
+            $('.block3').removeClass('startAnimationBlock3');
+            $('.block4').removeClass('startAnimationBlock4');
+            clearTimeout(timeOut);
+        }
+    </script>
+	<!-- Body  -->
+    <body>             
+        <div class="GP">
+            <div class="parent">
+              <div class="row">
+                <div class="block1"></div>
+                <div class="block2"></div> 
+              </div>
+              <div class="row">
+                <div class="block3"></div>
+                <div class="block4"></div>
+              </div>
+            </div>
+        </div>
+        <div class="controlBtn">
+            <button id="startAnimation" onclick="handleStart()">Start</button> <!-- Button on click call handleStart() function -->
+            <button id="startAnimation" onclick="handleStop()">Stop</button>   <!-- Button on click call handleStop() function -->
+        </div>
+    </body>
+</html>
