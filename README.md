@@ -1,7 +1,7 @@
 # Animation
 UI which contain 4 different colour circles and 2 buttons(Start and Stop).
 When click on Start button, each circle stretch upto its next circle position and reverse back with change in colour.
-When click on Stop button, animation stops and reverse back to its original position.
+When click on Stop button, all circles get back to its initial position.
 
 Designed using HTML, CSS, JavaScript
 
